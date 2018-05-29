@@ -123,4 +123,4 @@ With this view, we have access to pod information like status, logs, image, volu
 
 Feel free to continue exploring the console.
 
-In the final [bonus lab](../lab6/chapter6.md) you'll get to play with some new features, the service catalog and broker.
+In the final lab, you'll get to play with some new features, the service catalog and broker.
