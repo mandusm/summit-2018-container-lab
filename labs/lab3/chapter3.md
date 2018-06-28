@@ -309,3 +309,4 @@ This command will result in a cosmetic error because it is trying to stop runnin
 
 
 In the next we introduce container orchestration via OpenShift.
+
