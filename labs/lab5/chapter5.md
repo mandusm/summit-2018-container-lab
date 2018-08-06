@@ -8,17 +8,23 @@ Expected completion: 20 minutes
 
 ## Project preparation
 
+Ensure you're still logged in as the developer user.
+```shell
+$ oc whoami
+developer
+```
+
+If you aren't logged in as developer, do so now:
+```bash
+oc login
+```
+
 Let's create a new project.
 ```bash
 $ oc new-project production
 Now using project "production" on server "https://10.xx.xx.xxx:8443".
 ```
 
-Ensure you're still logged in as the developer user.
-```shell
-$ oc whoami
-developer
-```
 
 ## Wordpress templated deployment
 
