@@ -56,7 +56,7 @@ In this section we want to add a secret and some mapping to the AWS Service Brok
 
 The AWS Service Broker requires an AWS IAM Role that it will assume when provisioning AWS Services. This is a security mechanism that will limit what the service broker can do. For this workshop, we created a role in our account that is recognized by the IAM Arn of `arn:aws:iam::<account-id>:role/aws-servicebroker-cfn-deploy-role`
 
-We need to edit our `aws-servicebroker-secret.yaml` to include our CloudFormation role that it will assume. The secret template in this workshop already knows what the role name is, so we only need to make sure the `AWS Account ID` is correct. We can configure the secret manifest by running the below command.
+We need to edit our `aws-servicebroker-secret.yaml` to include our CloudFormation role that it will assume. The secret template in this workshop already knows what the role name is, so we only need to make sure the `AWS Account ID` is correct. We can configure the secret manifest by running the "sed" command below.
 
 ```bash
 $ sed -ie "s/<account-id>/$(curl -s http://169.254.169.254/latest/meta-data/iam/info/ | grep -oP '\d*(?=\:instance-profile)')/g" aws-servicebroker-secret.yaml
@@ -83,7 +83,7 @@ In the `broker-config: |` section add the below line
       - { apb_name: dh-sqs, secret: aws-secret, title: aws-secret}
 ```
 
-The resulting file should look like this
+The resulting file should look like this. Ensure spacing/indention matches the image below.
 
 ![Add Secrets](/api/workshops/openshift_rh_summit_2018/content/assets/labs/awssb/img/add-awssb-secret.png "Add APB Secrets")
 
