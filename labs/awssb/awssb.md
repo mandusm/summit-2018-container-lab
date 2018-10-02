@@ -8,8 +8,8 @@ Expected completion: 10-20 minutes
 The first step is to install the service broker into your cluster environment. Change your directory into the `awssb` directory and run the provided shell script to install the AWS service broker: `deploy_aws_broker.sh`
 
 ```bash
-cd ~/summit-2018-container-lab/labs/awssb
-./deploy_aws_broker.sh
+$ cd ~/summit-2018-container-lab/labs/awssb
+$ ./deploy_aws_broker.sh
 ```
 
 If the installation is successful, you should see a list of new `roles`,`secrets`,`accounts` and `services` created. An expected output would look something like the below snippit.
@@ -40,7 +40,7 @@ clusterservicebroker "aws-service-broker" created
 Test the installation...
 
 ```bash
-oc get clusterservicebroker
+$ oc get clusterservicebroker
 ```
 
 The expected result will list the AWS Service Broker and the OpenShift Template broker.
@@ -59,20 +59,22 @@ The AWS Service Broker requires an AWS IAM Role that it will assume when provisi
 We need to edit our `aws-servicebroker-secret.yaml` to include our CloudFormation role that it will assume. The secret template in this workshop already knows what the role name is, so we only need to make sure the `AWS Account ID` is correct. We can configure the secret manifest by running the below command.
 
 ```bash
-sed -ie "s/<account-id>/$(curl -s http://169.254.169.254/latest/meta-data/iam/info/ | grep -oP '\d*(?=\:instance-profile)')/g" aws-servicebroker-secret.yaml
+$ sed -ie "s/<account-id>/$(curl -s http://169.254.169.254/latest/meta-data/iam/info/ | grep -oP '\d*(?=\:instance-profile)')/g" aws-servicebroker-secret.yaml
 ```
 
-Now create a new secret in the `aws-service-broker` namespace
+Now create a new secret in the `aws-service-broker` namespace with the oc create command
 
 ```bash
-oc create -f aws-servicebroker-secret.yaml -n aws-service-broker
+$ oc create -f aws-servicebroker-secret.yaml -n aws-service-broker
 ```
 
 Now we need to edit the AWS Service Broker config map, to add this secret to our service broker. 
 
 ```bash
-oc edit configmap -n aws-service-broker
+$ oc edit configmap -n aws-service-broker
 ```
+
+**Note:** The "oc edit" command will open the service borker config file in vi.
 
 In the `broker-config: |` section add the below line
 
@@ -88,7 +90,7 @@ The resulting file should look like this
 Now we need to restart the service broker pod in order for the changes to propogate to the OpenShift Service Catalog
 
 ```bash
-oc rollout latest aws-asb -n aws-service-broker
+$ oc rollout latest aws-asb -n aws-service-broker
 ```
 
 It could take up to 5 minutes for the changes to be registered with the OpenShift Service Catalog. It's important that you wait for this change to happen, or the service provisioning will fail. We need to confirm this update has happened. 
@@ -101,9 +103,9 @@ NAME                   READY     STATUS    RESTARTS   AGE
 aws-asb-2-229nw        1/1       Running   0          7h
 aws-asb-etcd-1-4kchn   1/1       Running   0          7h
 ```
-Search the log file:
+Search the log file, with your pod ID:
 ```bash
-oc logs aws-asb-2-229nw | grep "Filtering secrets"
+$ oc logs aws-asb-<your-pod-id> | grep "Filtering secrets"
 ```
 
 
@@ -116,11 +118,12 @@ You should expect to see a line similar to this:
 Now that we have the service catalog installed and ready to use on the cluster. Let's provision a new SQS queue in a brand new project using the OpenShift console.
 
 Make sure you are on the welcome page of the `OpenShift Console`. Look for the icon that reads `Amazon SQS` and click on the Icon. This will open a new walkthrough wizard.
+
 On the first page, click next. Select FIFO and click next again. 
 
-Under `Project Name` Type whatever name you want. For this lab, we called it i`my-sqs-project` with a `Project Display Name` of `My SQS Project`
+Under `Project Name` Type whatever name you want. For this lab, we called it `my-sqs-project` with a `Project Display Name` of `My SQS Project`
 
-**Important** - Make sure that you do not need to enter the AWS Service Credentials into any inputs. 
+**Important** - Make sure that you do not need to enter the AWS Service Credentials into any inputs. If you are asked for AWS credentials, the service broker has not been configured correctly.
 
 Leave all other options as default and click Next.
 
@@ -132,7 +135,7 @@ Make sure that you are in the new project in the OpenShift Console, by clicking 
 ![Add Secrets](/api/workshops/openshift_rh_summit_2018/content/assets/labs/awssb/img/change-project.png "Add APB Secrets")
 
 ### Deploy a new image. 
-In the right hand side of the console, click on "Add to Project" and in the dropdown select "Deploy an Image"
+In the right hand side of the console, select the ellipses, click on "Add to Project" and in the dropdown select "Deploy an Image"
 
 ![Add Secrets](/api/workshops/openshift_rh_summit_2018/content/assets/labs/awssb/img/deploy-image.png "Add APB Secrets")
 
@@ -145,7 +148,7 @@ In the pop-up that gets displayed, enter the image name you want to deploy `mand
 Now deploy the image by clicking on the `Deploy` button. 
 
 ### Create route. 
-Now that the application has been provisioned, we need to expose a route for it in order to open it in our browsers. In the console, click the downward facing arrow next to the application pod to expand the pod details. Find the `expose route` link. Click on it, leave everything in the new form as default, and click `create`
+Now that the application has been provisioned, we need to expose a route for it in order to open it in our browsers. In the console, click the downward facing arrow next to the application pod to expand the pod details. Find the `create route` link. Click on it, leave everything in the new form as default, and click `create`
 
 ![Add Secrets](/api/workshops/openshift_rh_summit_2018/content/assets/labs/awssb/img/create-route.png "Add APB Secrets")
 
