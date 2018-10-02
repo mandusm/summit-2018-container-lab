@@ -140,7 +140,7 @@ In the right hand side of the console, select the ellipses, click on "Add to Pro
 ![Add Secrets](/api/workshops/openshift_rh_summit_2018/content/assets/labs/awssb/img/deploy-image.png "Add APB Secrets")
 
 ### Type in the Image Name and Deploy
-In the pop-up that gets displayed, enter the image name you want to deploy `mandusm/sqs-sample`. Click the magnifying glass icon to load the metadata from the Docker Repository. 
+In the pop-up that gets displayed, select the "Image Name" radio button and enter the image name you want to deploy `mandusm/sqs-sample`. Click the magnifying glass icon to load the metadata from the Docker Repository. 
 
 ![Add Secrets](/api/workshops/openshift_rh_summit_2018/content/assets/labs/awssb/img/image-metadata.png "Add APB Secrets")
 
