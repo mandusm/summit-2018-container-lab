@@ -103,6 +103,14 @@ $ cd ~/
 $ git clone https://github.com/mandusm/summit-2018-container-lab.git
 ```
 
+## Configure the Service Broker (Pre-work)
+
+During our last lab, we will use the AWS Service Brocker to provisions AWS services into our OCP Cluster directly from the OCP Web Console. In order to allow our OpenShift masters to call services from our AWS account, we need to configure the service broker and allow it access to the AWS account.
+
+After applying the configuration changes, we need to allow at least 10 minutes for all the services to refresh so we are going to complete the configuration changes before we start the rest of the labs. We need to go ahead and make the neccessary configuration changes now so we can get right to the final lab when we're ready.
+
+Please jump to [Lab 5](http://openshift.awsworkshop.io/index.html#/workshop/openshift_rh_summit_2018/module/labs_awssb_awssb) and complete the "Installation" and "Configure the Service Broker to Populate Parameters" sections before continuing with the rest of the lab.
+
 ## OpenShift Container Platform
 
 What is OpenShift? OpenShift, which you may remember as a "[PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service)" to build applications on, has evolved into a complete container platform based on Kubernetes. If you remember the "[DIY Cartridges](https://github.com/openshift/origin-server/blob/master/documentation/oo_cartridge_guide.adoc#diy)" from older versions of Openshift, essentially, OpenShift v3 has expanded the functionality to provide complete containers. With OpenShift, you can build from a platform, build from scratch, or anything else you can do in a container, and still get the complete lifecycle automation you loved in the older versions.
