@@ -11,9 +11,13 @@ This lab is designed to accommodate many students. As a result, each student wil
 
 You will be assigned a number by the instructor.
 
-Retrieve the key from the Download links here
-- [SSH Private Key - PEM ](https://s3-us-west-2.amazonaws.com/redhat-lunch-learn-lab/keys/ocp-lab.pem)
-- [SSH Private Key - PPK ](https://s3-us-west-2.amazonaws.com/redhat-lunch-learn-lab/keys/ocp-lab.ppk)
+If these workshop is being delivered in the North America region, retrieve the key from the Download links here:
+- [NA SSH Private Key - PEM ](https://s3-us-west-2.amazonaws.com/redhat-lunch-learn-lab/keys/ocp-lab.pem)
+- [NA SSH Private Key - PPK ](https://s3-us-west-2.amazonaws.com/redhat-lunch-learn-lab/keys/ocp-lab.ppk)
+
+If these workshop is being delivered in the APAC region, retrieve the key from the Download links here
+- [APAC SSH Private Key - PEM ](https://s3-us-west-2.amazonaws.com/redhat-workshops/keys/apac-workshops.pem)
+- [APPAC SSH Private Key - PPK ](https://s3-us-west-2.amazonaws.com/redhat-workshops/keys/apac-workshops.ppk)
 
 You can now _SSH_ into the instances by downloading the `.PEM` or `.PPK` file to your local machine and change the permissions of the file to `400` if you are using `Mac OSX` or `Linux`.
 
