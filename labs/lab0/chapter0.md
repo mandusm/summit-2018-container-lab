@@ -17,7 +17,7 @@ If these workshop is being delivered in the North America region, retrieve the k
 
 If these workshop is being delivered in the APAC region, retrieve the key from the Download links here
 - [APAC SSH Private Key - PEM ](https://s3-us-west-2.amazonaws.com/redhat-workshops/keys/apac-workshops.pem)
-- [APPAC SSH Private Key - PPK ](https://s3-us-west-2.amazonaws.com/redhat-workshops/keys/apac-workshops.ppk)
+- [APAC SSH Private Key - PPK ](https://s3-us-west-2.amazonaws.com/redhat-workshops/keys/apac-workshops.ppk)
 
 You can now _SSH_ into the instances by downloading the `.PEM` or `.PPK` file to your local machine and change the permissions of the file to `400` if you are using `Mac OSX` or `Linux`.
 
