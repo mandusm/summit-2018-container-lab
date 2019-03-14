@@ -22,8 +22,7 @@ If these workshop is being delivered in the APAC region, retrieve the key from t
 You can now _SSH_ into the instances by downloading the `.PEM` or `.PPK` file to your local machine and change the permissions of the file to `400` if you are using `Mac OSX` or `Linux`.
 
 ```bash
-curl -kLO "https://s3-us-west-2.amazonaws.com/redhat-lunch-learn-lab/keys/ocp-lab.pem"
-chmod 400 ocp-lab.pem
+chmod 400 <location>.pem
 ```
 
 If you are using `Windows` and `Putty`, download the PPK file and log in using `Putty`
